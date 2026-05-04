@@ -1,0 +1,422 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* --- CRITICAL: Enable class-based dark mode for Tailwind v4 --- */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-space: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* === UNIQUE AURORA PALETTE === */
+  --color-neon-50:  #f0fdf9;
+  --color-neon-100: #ccfbef;
+  --color-neon-200: #99f6e0;
+  --color-neon-300: #5eead4;
+  --color-neon-400: #2dd4bf;
+  --color-neon-500: #14b8a6;
+  --color-neon-600: #0d9488;
+  --color-neon-700: #0f766e;
+  --color-neon-800: #115e59;
+  --color-neon-900: #134e4a;
+
+  --color-volt-50:  #f5f3ff;
+  --color-volt-100: #ede9fe;
+  --color-volt-200: #ddd6fe;
+  --color-volt-300: #c4b5fd;
+  --color-volt-400: #a78bfa;
+  --color-volt-500: #8b5cf6;
+  --color-volt-600: #7c3aed;
+  --color-volt-700: #6d28d9;
+  --color-volt-800: #5b21b6;
+  --color-volt-900: #4c1d95;
+
+  --color-plasma-400: #f472b6;
+  --color-plasma-500: #ec4899;
+  --color-plasma-600: #db2777;
+
+  --color-ink-900:  #0a0a0f;
+  --color-ink-800:  #0f0f1a;
+  --color-ink-700:  #16162a;
+  --color-ink-600:  #1e1e35;
+  --color-ink-500:  #2a2a4a;
+  --color-ink-400:  #3d3d6b;
+  --color-ink-300:  #5a5a8a;
+  --color-ink-200:  #8888b0;
+  --color-ink-100:  #c0c0d8;
+  --color-ink-50:   #eeeef6;
+}
+
+@layer base {
+  :root {
+    --bg-main: #0a0a0f;
+    --bg-secondary: #0f0f1a;
+    --bg-tertiary: #0d0d18;
+    --text-main: #eeeef6;
+    --text-muted: #8888b0;
+    --glass-bg: rgba(14, 14, 28, 0.7);
+    --glass-border: rgba(139,92,246,0.15);
+    --nav-bg: rgba(10,10,15,0.85);
+  }
+
+  .light {
+    --bg-main: #f0fdf4;
+    --bg-secondary: #e2e8f0;
+    --bg-tertiary: #cbd5e1;
+    --text-main: #0f172a;
+    --text-muted: #334155;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(20, 184, 166, 0.3);
+    --nav-bg: rgba(240, 253, 244, 0.85);
+  }
+
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+    box-sizing: border-box;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-space);
+    background: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(139, 92, 246, 0.4);
+    color: #fff;
+  }
+}
+
+/* ============================
+   CUSTOM SCROLLBAR
+=============================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0f0f1a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #14b8a6, #8b5cf6);
+  border-radius: 99px;
+}
+
+/* ============================
+   NOISE / MESH BACKGROUND
+=============================== */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================
+   GRID LINES BACKGROUND
+=============================== */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(139,92,246,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ============================
+   AURORA ORBS
+=============================== */
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: drift 8s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -30px) scale(1.08); }
+}
+
+/* ============================
+   GLASS CARDS
+=============================== */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.glass-card {
+  background: rgba(14, 14, 28, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 1px rgba(20,184,166,0.05), 0 20px 40px rgba(0,0,0,0.4);
+}
+.glass-card:hover {
+  border-color: rgba(139,92,246,0.35);
+  box-shadow: 0 0 30px rgba(139,92,246,0.1), 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ============================
+   NEON GLOW BUTTONS (Unique)
+=============================== */
+/* Primary — Teal-Cyan */
+.btn-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  border-radius: 12px;
+  color: #0a0a0f;
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(20,184,166,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-neon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-neon:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 35px rgba(20,184,166,0.6), 0 12px 30px rgba(0,0,0,0.3);
+}
+.btn-neon:hover::after { opacity: 1; }
+.btn-neon:active { transform: translateY(0) scale(0.98); }
+
+/* Secondary — Violet/Purple */
+.btn-volt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(139,92,246,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn-volt:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 40px rgba(139,92,246,0.65), 0 12px 30px rgba(0,0,0,0.3);
+}
+.btn-volt:active { transform: translateY(0) scale(0.98); }
+
+/* Outline Ghost */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 12px;
+  color: #c0c0d8;
+  background: transparent;
+  border: 1px solid rgba(139,92,246,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(20,184,166,0.05));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-ghost:hover {
+  border-color: rgba(20,184,166,0.7);
+  color: #2dd4bf;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(20,184,166,0.2);
+}
+.btn-ghost:hover::before { opacity: 1; }
+
+/* Pink/Plasma accent */
+.btn-plasma {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(135deg, #f472b6, #db2777);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 16px rgba(236,72,153,0.4);
+}
+.btn-plasma:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 0 30px rgba(236,72,153,0.65);
+}
+
+/* ============================
+   SHIMMER ANIMATION
+=============================== */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, #2dd4bf 0%, #8b5cf6 40%, #f472b6 60%, #2dd4bf 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ============================
+   TYPEWRITER CURSOR
+=============================== */
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 0.8s step-end infinite;
+  color: #14b8a6;
+  margin-left: 2px;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============================
+   TAG PILLS (unique per category)
+=============================== */
+.tag-teal {
+  background: rgba(20,184,166,0.12);
+  color: #2dd4bf;
+  border: 1px solid rgba(20,184,166,0.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+.tag-volt {
+  background: rgba(139,92,246,0.12);
+  color: #a78bfa;
+  border: 1px solid rgba(139,92,246,0.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+.tag-plasma {
+  background: rgba(236,72,153,0.1);
+  color: #f472b6;
+  border: 1px solid rgba(236,72,153,0.22);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* ============================
+   SECTION LABEL
+=============================== */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2dd4bf;
+}
+.section-label::before, .section-label::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2dd4bf);
+}
+.section-label::after {
+  background: linear-gradient(90deg, #2dd4bf, transparent);
+}
+
+/* ============================
+   GLOWING STAT NUMBER
+=============================== */
+.glow-text {
+  text-shadow: 0 0 20px rgba(20,184,166,0.6), 0 0 40px rgba(20,184,166,0.3);
+}
+
+/* ============================
+   PULSE RING
+=============================== */
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #14b8a6;
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* ============================
+   TILT CARD (project)
+=============================== */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.tilt-card:hover {
+  transform: rotateY(-4deg) rotateX(3deg) translateZ(10px);
+  box-shadow: 12px 12px 40px rgba(0,0,0,0.5), 0 0 30px rgba(139,92,246,0.15);
+}
+
+/* ============================
+   ACTIVE FILTER CHIP
+=============================== */
+.filter-chip-active {
+  background: linear-gradient(135deg, #2dd4bf, #8b5cf6);
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 16px rgba(139,92,246,0.4);
+}
+.filter-chip {
+  background: rgba(255,255,255,0.04);
+  color: #8888b0;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.filter-chip:hover {
+  background: rgba(139,92,246,0.1);
+  color: #a78bfa;
+  border-color: rgba(139,92,246,0.3);
+}
