@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { Mail, MapPin, Phone, Send, Loader2, Zap } from 'lucide-react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiLeetcode, SiHackerrank } from 'react-icons/si';
@@ -57,8 +56,8 @@ export default function Contact() {
   const onSubmit = async (data) => {
     try {
       setStatus(null);
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-      await axios.post(`${apiUrl}/contact`, data);
+      // Simulated delay for frontend-only mode
+      await new Promise(resolve => setTimeout(resolve, 1000));
       setStatus({ type: 'success', message: '✅ Message sent! I\'ll get back to you soon.' });
       reset();
     } catch {
