@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Modern Full-Stack Personal Portfolio
 
 A stunning, production-ready personal portfolio website built with React, Vite, Tailwind CSS, Framer Motion, Node.js, Express, and MongoDB.
@@ -130,3 +131,7 @@ To personalize the portfolio, simply update:
 
 ---
 *Built by a Senior Full-Stack Developer.*
+=======
+# portfolio
+Developed a full-stack portfolio website using the MERN Stack to present my technical skills, projects, and achievements. Implemented REST APIs, dynamic content management, and responsive design for optimal user experience.
+>>>>>>> 95ffe1ba48cb05121d17a8ecf315b47f507a2926
