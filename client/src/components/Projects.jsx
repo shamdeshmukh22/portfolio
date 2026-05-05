@@ -71,7 +71,7 @@ export default function Projects() {
     <section
       id="projects"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0d0d18 0%, #0a0a0f 60%, #0f0f1a 100%)' }}
+      style={{ background: 'linear-gradient(180deg, var(--bg-tertiary) 0%, var(--bg-main) 60%, var(--bg-secondary) 100%)' }}
     >
       {/* Decoration */}
       <div className="aurora-orb w-96 h-96 top-[-80px] left-[-60px] opacity-10"
@@ -90,11 +90,11 @@ export default function Projects() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mt-4 mb-4"
+            className="text-4xl md:text-5xl font-bold mt-4 mb-4" style={{ color: 'var(--text-main)' }}
           >
             Featured <span className="shimmer-text">Projects</span>
           </motion.h2>
-          <p className="max-w-2xl mx-auto text-base" style={{ color: '#8888b0' }}>
+          <p className="max-w-2xl mx-auto text-base" style={{ color: 'var(--text-muted)' }}>
             Real-world applications spanning AI, agriculture, and e-commerce — built from scratch.
           </p>
         </div>
@@ -167,14 +167,14 @@ export default function Projects() {
 
                 {/* Body */}
                 <div className="p-5 flex flex-col flex-1">
-                  <p className="text-sm mb-4 leading-relaxed line-clamp-3" style={{ color: '#8888b0' }}>
+                  <p className="text-sm mb-4 leading-relaxed line-clamp-3" style={{ color: 'var(--text-muted)' }}>
                     {project.description}
                   </p>
 
                   {/* Highlights */}
                   <ul className="space-y-1.5 mb-5">
                     {project.highlights.map((h) => (
-                      <li key={h} className="flex items-center gap-2 text-xs" style={{ color: '#8888b0' }}>
+                      <li key={h} className="flex items-center gap-2 text-xs" style={{ color: 'var(--text-muted)' }}>
                         <span
                           className="w-1.5 h-1.5 rounded-full shrink-0"
                           style={{ background: project.accent, boxShadow: `0 0 6px ${project.accent}` }}
@@ -201,9 +201,9 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-semibold transition-all duration-200 px-3 py-1.5 rounded-lg"
-                      style={{ color: '#8888b0', border: '1px solid rgba(255,255,255,0.08)' }}
-                      onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.07)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.color = '#8888b0'; e.currentTarget.style.background = ''; }}
+                      style={{ color: 'var(--text-muted)', border: '1px solid var(--glass-border)' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-main)'; e.currentTarget.style.background = 'var(--glass-bg)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.background = ''; }}
                     >
                       <FaGithub size={16} /> Code
                     </a>

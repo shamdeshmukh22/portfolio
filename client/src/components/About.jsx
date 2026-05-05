@@ -122,7 +122,7 @@ export default function About() {
 
           {/* ── LEFT: Skills + Achievements ── */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-7 flex items-center gap-3">
+            <h3 className="text-xl font-bold mb-7 flex items-center gap-3" style={{ color: 'var(--text-main)' }}>
               <span className="w-8 h-px" style={{ background: 'linear-gradient(90deg, #14b8a6, transparent)' }} />
               Technical Skills
             </h3>
@@ -146,7 +146,7 @@ export default function About() {
                     >
                       <g.icon size={17} />
                     </div>
-                    <h4 className="font-semibold text-sm text-white">{g.name}</h4>
+                    <h4 className="font-semibold text-sm" style={{ color: 'var(--text-main)' }}>{g.name}</h4>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {g.items.map((item) => (
@@ -158,7 +158,7 @@ export default function About() {
             </div>
 
             {/* Achievements */}
-            <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-3">
+            <h3 className="text-xl font-bold mb-5 flex items-center gap-3" style={{ color: 'var(--text-main)' }}>
               <span className="w-8 h-px" style={{ background: 'linear-gradient(90deg, #8b5cf6, transparent)' }} />
               Achievements
             </h3>
@@ -182,7 +182,7 @@ export default function About() {
                     {a.emoji}
                   </div>
                   <div>
-                    <p className="font-bold text-white text-sm">{a.title}</p>
+                    <p className="font-bold text-sm" style={{ color: 'var(--text-main)' }}>{a.title}</p>
                     <p className="text-xs mt-0.5" style={{ color: '#8888b0' }}>{a.desc}</p>
                   </div>
                   <div className="ml-auto w-1.5 h-8 rounded-full shrink-0"
@@ -194,7 +194,7 @@ export default function About() {
 
           {/* ── RIGHT: Education Only ── */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-7 flex items-center gap-3">
+            <h3 className="text-xl font-bold mb-7 flex items-center gap-3" style={{ color: 'var(--text-main)' }}>
               <span className="w-8 h-px" style={{ background: 'linear-gradient(90deg, #8b5cf6, transparent)' }} />
               Education
             </h3>
@@ -237,7 +237,7 @@ export default function About() {
                     >
                       {item.year}
                     </span>
-                    <h4 className="font-bold text-white text-base leading-snug mb-1">{item.degree}</h4>
+                    <h4 className="font-bold text-base leading-snug mb-1" style={{ color: 'var(--text-main)' }}>{item.degree}</h4>
                     <p className="text-sm font-semibold mb-1" style={{ color: item.accent }}>{item.institution}</p>
                     <p className="text-xs font-mono mb-2" style={{ color: '#5a5a8a' }}>{item.detail}</p>
                     <p className="text-sm leading-relaxed" style={{ color: '#8888b0' }}>{item.note}</p>

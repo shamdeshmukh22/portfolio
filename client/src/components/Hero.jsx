@@ -176,7 +176,7 @@ export default function Hero() {
             {/* Avatar */}
             <div className="absolute inset-0 rounded-full flex items-center justify-center overflow-hidden"
               style={{ background: 'var(--bg-secondary)' }}>
-              <span className="text-6xl font-black shimmer-text select-none">GD</span>
+              <img src="/profile.png" alt="Ghansham Deshmukh" className="w-full h-full object-cover" />
             </div>
 
             {/* Floating badge — CET */}

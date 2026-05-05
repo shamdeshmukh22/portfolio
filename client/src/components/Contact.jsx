@@ -42,7 +42,7 @@ const inputStyle = {
   borderRadius: '12px',
   background: 'rgba(255,255,255,0.04)',
   border: '1px solid rgba(139,92,246,0.2)',
-  color: '#eeeef6',
+  color: 'var(--text-main)',
   outline: 'none',
   fontSize: '0.875rem',
   fontFamily: 'inherit',
@@ -78,7 +78,7 @@ export default function Contact() {
     <section
       id="contact"
       className="py-28 relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #0a0a0f 0%, #0d0d18 50%, #0a0a0f 100%)' }}
+      style={{ background: 'linear-gradient(180deg, var(--bg-main) 0%, var(--bg-tertiary) 50%, var(--bg-main) 100%)' }}
     >
       {/* Orbs */}
       <div className="aurora-orb w-80 h-80 bottom-[-60px] left-[-40px] opacity-12"
@@ -97,11 +97,11 @@ export default function Contact() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mt-4 mb-4"
+            className="text-4xl md:text-5xl font-bold mt-4 mb-4" style={{ color: 'var(--text-main)' }}
           >
             Get In <span className="shimmer-text">Touch</span>
           </motion.h2>
-          <p className="max-w-xl mx-auto text-base" style={{ color: '#8888b0' }}>
+          <p className="max-w-xl mx-auto text-base" style={{ color: 'var(--text-muted)' }}>
             Have a project idea, collaboration opportunity, or just want to say hi?
           </p>
         </div>
@@ -198,7 +198,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono mb-2" style={{ color: '#8888b0' }}>
+                  <label className="block text-xs font-mono mb-2" style={{ color: 'var(--text-muted)' }}>
                     &gt; your_name
                   </label>
                   <input
@@ -211,7 +211,7 @@ export default function Contact() {
                   {errors.name && <p className="text-xs mt-1.5" style={{ color: '#f472b6' }}>{errors.name.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-mono mb-2" style={{ color: '#8888b0' }}>
+                  <label className="block text-xs font-mono mb-2" style={{ color: 'var(--text-muted)' }}>
                     &gt; your_email
                   </label>
                   <input
@@ -229,7 +229,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono mb-2" style={{ color: '#8888b0' }}>
+                <label className="block text-xs font-mono mb-2" style={{ color: 'var(--text-muted)' }}>
                   &gt; your_message
                 </label>
                 <textarea
