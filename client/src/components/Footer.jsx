@@ -21,8 +21,8 @@ export default function Footer() {
     <footer
       className="relative overflow-hidden pt-16 pb-8"
       style={{
-        background: '#090910',
-        borderTop: '1px solid rgba(139,92,246,0.15)',
+        background: 'var(--bg-main)',
+        borderTop: '1px solid var(--glass-border)',
       }}
     >
       {/* Top glow line */}
@@ -51,7 +51,7 @@ export default function Footer() {
               >
                 <Terminal size={15} className="text-white" />
               </div>
-              <span className="text-xl font-bold font-mono" style={{ color: '#eeeef6' }}>
+              <span className="text-xl font-bold font-mono" style={{ color: 'var(--text-main)' }}>
                 GD<span style={{ color: '#14b8a6' }}>.</span>
               </span>
             </a>
@@ -73,9 +73,9 @@ export default function Footer() {
                   <a
                     href={link.href}
                     className="text-sm font-medium transition-all duration-200 flex items-center gap-2 group"
-                    style={{ color: '#8888b0' }}
+                    style={{ color: 'var(--text-muted)' }}
                     onMouseEnter={e => { e.currentTarget.style.color = '#2dd4bf'; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = '#8888b0'; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
                   >
                     <span className="font-mono text-xs" style={{ color: '#3d3d6b' }}>→</span>
                     {link.name}
@@ -96,9 +96,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-sm font-medium transition-all duration-200 group"
-                  style={{ color: '#8888b0' }}
+                  style={{ color: 'var(--text-muted)' }}
                   onMouseEnter={e => { e.currentTarget.style.color = s.accent; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = '#8888b0'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
                 >
                   <div
                     className="w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200"
